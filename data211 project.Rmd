@@ -1,0 +1,30 @@
+---
+title: "project"
+output: html_document
+date: "2023-11-30"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#install.packages("readxl")
+#install.packages("ggplot2")
+#install.packages("dplyr")
+library(readxl)
+library(ggplot2)
+library(dplyr)
+```
+```{r}
+water<-read_excel("data211 project.xlsx")
+water
+
+```
+```{r}
+t.test(water$Amount,mu=2810,alternative = "greater")
+```
+```{r}
+ggplot(data=water,aes(x=Date, y=Amount))+geom_col()+geom_hline(yintercept=2810, linetype="dashed", color="red")+geom_hline(yintercept=3095, linetype="dashed", color="blue")
+```
+
